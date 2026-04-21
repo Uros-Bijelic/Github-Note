@@ -5,8 +5,6 @@ import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-// ----------------------------------------------------------------
-
 interface ITagItemProps {
   title: string;
   isLink?: boolean;

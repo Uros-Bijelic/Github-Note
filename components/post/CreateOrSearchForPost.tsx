@@ -7,8 +7,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-// ----------------------------------------------------------------
-
 const CreateOrSearchForPost: React.FC = () => {
   const pathname = usePathname();
 
@@ -23,7 +21,7 @@ const CreateOrSearchForPost: React.FC = () => {
               height={14}
               alt="Add"
             />
-            <p className="p4-medium !text-white-100">Create Post</p>
+            <p className="p4-medium text-white-100!">Create Post</p>
           </Button>
         </Link>
       )}

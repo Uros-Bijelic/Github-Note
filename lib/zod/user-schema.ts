@@ -1,7 +1,5 @@
 import z from 'zod';
 
-// ----------------------------------------------------------------
-
 export const learningGoalsSchema = z.object({
   isChecked: z.boolean(),
   goal: z.string().trim().min(1, 'Please enter your goal!'),
@@ -26,8 +24,8 @@ export const userDataBaseSchema = z.object({
     .array(techStackSchema)
     .min(1, 'Please add at least 1 stack item!'),
   isAvailable: z.boolean().optional(),
-  startDate: z.date({ required_error: 'Plase enter start date!' }).optional(),
-  endDate: z.date({ required_error: 'Please enter end date!' }).optional(),
+  startDate: z.date().optional(),
+  endDate: z.date().optional(),
 });
 
 export const updateUserSchema = userDataBaseSchema.extend({

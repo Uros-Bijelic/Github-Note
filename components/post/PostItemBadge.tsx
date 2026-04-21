@@ -5,9 +5,6 @@ import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 import { EPostType, EQueryPostType } from '@/types/post-types';
-
-// ----------------------------------------------------------------
-
 interface IPostItemBadgeProps {
   postType: EPostType;
 }
@@ -78,7 +75,7 @@ const PostItemBadge: React.FC<IPostItemBadgeProps> = ({ postType }) => {
       href={
         pathname + '?' + updatePostTypeParam(postTypeQuery as EQueryPostType)
       }
-      className={`${styles} flex max-w-[108px] cursor-pointer gap-1 rounded-[3px] py-0.5 pl-1 pr-2 text-sm`}
+      className={`${styles} flex max-w-27 cursor-pointer gap-1 rounded-[3px] py-0.5 pl-1 pr-2 text-sm`}
     >
       <Image
         style={{ position: 'relative' }}

@@ -5,10 +5,10 @@ import { Button } from '../ui/button';
 import Image from 'next/image';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 
-// ----------------------------------------------------------------
-
 const AddKnowledgeLevel = () => {
-  const { fields, append, remove } = useFieldArray({ name: 'knowledgeLevel' });
+  const { fields, append, remove } = useFieldArray({
+    name: 'knowledgeLevel',
+  });
   const {
     formState: { errors },
   } = useFormContext();

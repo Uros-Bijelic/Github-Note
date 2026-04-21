@@ -3,6 +3,7 @@ import { AUTH_CONFIG } from './lib/auth.config';
 import { IUser } from './types/user';
 
 import NextAuth from 'next-auth';
+import type { Session } from 'next-auth';
 
 // ----------------------------------------------------------------
 
@@ -66,7 +67,7 @@ export const {
 
       return session;
     },
-    authorized({ auth }) {
+    authorized({ auth }: { auth: Session | null }) {
       const isAuthenticated = !!auth?.user;
 
       return isAuthenticated;

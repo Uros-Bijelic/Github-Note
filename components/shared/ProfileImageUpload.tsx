@@ -6,8 +6,6 @@ import { CldUploadButton } from 'next-cloudinary';
 import Image from 'next/image';
 import { useFormContext } from 'react-hook-form';
 
-// ----------------------------------------------------------------
-
 interface IProfileImageUploadProps {
   name: string;
 }
@@ -28,9 +26,9 @@ const ProfileImageUpload: React.FC<IProfileImageUploadProps> = ({ name }) => {
             alt="Upload Image"
             width={90}
             height={90}
-            className="size-[90px] rounded object-cover"
+            className="size-22.5 rounded object-cover"
           />
-          <Label className="flex-center w-[200px] cursor-pointer gap-2 rounded-md bg-black-700 p-2">
+          <Label className="flex-center w-50 cursor-pointer gap-2 rounded-md bg-black-700 p-2">
             <CldUploadButton
               className="flex items-center gap-2"
               uploadPreset={

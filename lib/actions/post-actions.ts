@@ -3,16 +3,13 @@
 import { connectToMongoDB } from '../database/mongodb';
 import { IPostSchema } from '../zod/post-schema';
 
-import mongoose, { FilterQuery } from 'mongoose';
+import mongoose from 'mongoose';
 import { revalidatePath } from 'next/cache';
 
 import { auth } from '@/auth';
 import Post from '@/models/post';
 import Tag from '@/models/tag';
-import type { IPost } from '@/types/post';
 import { EPostType, EQueryPostType } from '@/types/post-types';
-
-// ----------------------------------------------------------------
 
 export const createPost = async (data: IPostSchema) => {
   try {
@@ -28,16 +25,16 @@ export const createPost = async (data: IPostSchema) => {
     });
 
     const existingTagsTitles = existingTags?.map((t) => t.title.toLowerCase());
-    const existingTagsIds = existingTags.map((t) => t._id.toString());
+    const existingTagsIds = existingTags.map((t) => t._id);
 
     const tagsToCreate = data.tags
       .filter((t) => !existingTagsTitles.includes(t.label.toLowerCase()))
       .map((t) => ({ title: t.label, ownerId: session.user.id }));
 
-    let createdTags: string[] = [];
+    let createdTags: mongoose.Types.ObjectId[] = [];
     if (tagsToCreate.length > 0) {
       createdTags = (await Tag.insertMany(tagsToCreate, { lean: true }))?.map(
-        (t) => t._id.toString()
+        (t) => new mongoose.Types.ObjectId(t._id)
       );
     }
 
@@ -84,16 +81,16 @@ export const updatePost = async (postId: string, data: IPostSchema) => {
     });
 
     const existingTagsTitles = existingTags?.map((t) => t.title.toLowerCase());
-    const existingTagsIds = existingTags.map((t) => t._id.toString());
+    const existingTagsIds = existingTags.map((t) => t._id);
 
     const tagsToCreate = data.tags
       .filter((t) => !existingTagsTitles.includes(t.label.toLowerCase()))
       .map((t) => ({ title: t.label, ownerId: session.user.id }));
 
-    let createdTags: string[] = [];
+    let createdTags: mongoose.Types.ObjectId[] = [];
     if (tagsToCreate.length > 0) {
       createdTags = (await Tag.insertMany(tagsToCreate, { lean: true }))?.map(
-        (t) => t._id.toString()
+        (t) => new mongoose.Types.ObjectId(t._id)
       );
     }
 
@@ -142,7 +139,7 @@ export const getAllPosts = async ({
 
     await connectToMongoDB();
 
-    let query: FilterQuery<IPost> = {
+    let query: Record<string, unknown> = {
       ownerId: session.user.id,
     };
 
@@ -162,12 +159,14 @@ export const getAllPosts = async ({
       query = { ...query, tags: { $in: fetchedTagsIds } };
     }
 
-    const posts = await Post.find(query)
+    const posts = await Post.find(query as mongoose.QueryFilter<unknown>)
       .populate('tags')
       .skip(skip)
       .limit(itemsPerPage);
 
-    const postsCount = await Post.find(query).countDocuments({});
+    const postsCount = await Post.find(
+      query as mongoose.QueryFilter<unknown>
+    ).countDocuments({});
 
     const totalPages = Math.ceil(postsCount / itemsPerPage);
     const hasNextPage = page < totalPages;
@@ -212,7 +211,7 @@ export const deletePost = async (postId: string) => {
       };
     }
 
-    post?.deleteOne({ id: postId });
+    await post.deleteOne();
 
     revalidatePath('/');
     return { ok: true, status: 200 };
@@ -247,7 +246,6 @@ export const getHeatMapPostsData = async () => {
         },
       },
     ]);
-    revalidatePath('/');
     return JSON.parse(JSON.stringify(formatedPostDates));
   } catch (error) {
     console.log('Error deleting post!', error);

@@ -15,8 +15,6 @@ import { auth } from '@/auth';
 import User from '@/models/user';
 import type { IUser } from '@/types/user';
 
-// ----------------------------------------------------------------
-
 export const getUserById = async (userId: string) => {
   try {
     await connectToMongoDB();

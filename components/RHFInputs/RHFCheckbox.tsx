@@ -11,8 +11,6 @@ import {
   FormLabel,
 } from '@/components/ui/form';
 
-// ----------------------------------------------------------------
-
 interface IRHFCheckboxProps extends CheckboxProps {
   name: string;
   label?: string;

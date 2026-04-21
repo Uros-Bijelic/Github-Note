@@ -5,8 +5,6 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import GitHubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 
-// ----------------------------------------------------------------
-
 export const AUTH_CONFIG: NextAuthConfig = {
   secret: process.env.NEXTAUTH_SECRET,
   providers: [

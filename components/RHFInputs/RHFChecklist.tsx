@@ -6,8 +6,6 @@ import { Button } from '../ui/button';
 import Image from 'next/image';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 
-// ----------------------------------------------------------------
-
 interface IRHFChecklistProps {
   noContentMessage: string;
   placeholder: string;

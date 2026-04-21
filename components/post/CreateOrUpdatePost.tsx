@@ -28,8 +28,6 @@ import { postSchema, type IPostSchema } from '@/lib/zod/post-schema';
 import type { IPost } from '@/types/post';
 import { EPostType } from '@/types/post-types';
 
-// ----------------------------------------------------------------
-
 interface ICreateOrUpdatePostProps {
   tags: ISelectOptions[];
   post?: IPost;
@@ -45,7 +43,10 @@ const CreateOrUpdatePost: React.FC<ICreateOrUpdatePostProps> = ({
   const isEditPage = !!post;
 
   const modifiedTags =
-    post?.tags?.map(({ title }) => ({ label: title, value: title })) || [];
+    post?.tags?.map(({ title }) => ({
+      label: title,
+      value: title,
+    })) || [];
 
   const form = useForm<IPostSchema>({
     resolver: zodResolver(postSchema),
@@ -70,7 +71,10 @@ const CreateOrUpdatePost: React.FC<ICreateOrUpdatePostProps> = ({
 
         if (response.status === 200) {
           router.push(response.redirectRoute!);
-          toast({ variant: 'success', title: 'Post updated successfully!' });
+          toast({
+            variant: 'success',
+            title: 'Post updated successfully!',
+          });
         } else if (response.status === 404) {
           toast({
             variant: 'error',
@@ -85,7 +89,10 @@ const CreateOrUpdatePost: React.FC<ICreateOrUpdatePostProps> = ({
       } else {
         const response = await createPost(data);
         if (response?.ok === true && response?.status === 201) {
-          toast({ variant: 'success', title: 'Post created successfully' });
+          toast({
+            variant: 'success',
+            title: 'Post created successfully',
+          });
           router.push(response.redirectRoute);
         }
       }
@@ -116,8 +123,8 @@ const CreateOrUpdatePost: React.FC<ICreateOrUpdatePostProps> = ({
     postType === EPostType.KNOWLEDGE ? 'What you learned' : 'Steps to follow';
 
   return (
-    <section className="my-[30px] px-[30px]">
-      <h1 className="h1-bold mb-[30px]  lg:mb-8">
+    <section className="my-7.5 px-7.5">
+      <h1 className="h1-bold mb-7.5  lg:mb-8">
         {isEditPage ? 'Edit' : 'Create'} Post
       </h1>
       <p className="mb-6 text-sm uppercase text-white-500">Basic information</p>

@@ -11,8 +11,6 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 
-// ----------------------------------------------------------------
-
 interface IRHFTextareaProps extends TextareaProps {
   name: string;
   label?: string;

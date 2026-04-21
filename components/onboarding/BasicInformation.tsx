@@ -9,8 +9,6 @@ import { useFormContext } from 'react-hook-form';
 import type { IUserOnboarding } from '@/lib/zod/user-schema';
 import { EOnboardingStep } from '@/types/onboarding-step';
 
-// ----------------------------------------------------------------
-
 interface IBasicInformationProps {
   handleChangeStep: (
     // eslint-disable-next-line no-unused-vars

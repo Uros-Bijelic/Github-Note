@@ -1,25 +1,27 @@
-import { auth } from '@/auth';
-import CreateOrUpdatePost from '@/components/post/CreateOrUpdatePost';
-import { getPostById } from '@/lib/actions/post-actions';
-import { getTags } from '@/lib/actions/tag-actions';
-import { IPost } from '@/types/post';
-import type { ITag } from '@/types/tag';
+import { auth } from "@/auth";
+import CreateOrUpdatePost from "@/components/post/CreateOrUpdatePost";
+import { getPostById } from "@/lib/actions/post-actions";
+import { getTags } from "@/lib/actions/tag-actions";
+import { IPost } from "@/types/post";
+import type { ITag } from "@/types/tag";
 
 // ----------------------------------------------------------------
 interface IEditPostPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 const EditPostPage: React.FC<IEditPostPageProps> = async ({ params }) => {
-  const postId = params.id;
+  const postId = (await params).id;
 
   const session = await auth();
-  if (!session)
+
+  if (!session) {
     throw new Error(
-      'Something went wrong. User data is not available at this moment!'
+      "Something went wrong. User data is not available at this moment!"
     );
+  }
 
   const tags: ITag[] = (await getTags(session.user.id)) || [];
 
@@ -27,7 +29,7 @@ const EditPostPage: React.FC<IEditPostPageProps> = async ({ params }) => {
 
   if (!post || !tags)
     throw new Error(
-      'Something went wrong. Post details are not available at this moment!'
+      "Something went wrong. Post details are not available at this moment!"
     );
 
   const modifiedTags = tags.map((tag) => ({

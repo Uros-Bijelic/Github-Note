@@ -3,8 +3,6 @@ import Link from 'next/link';
 
 import { EPostType } from '@/types/post-types';
 
-// ----------------------------------------------------------------
-
 interface ILinkPostItemProps {
   id: string;
   type: EPostType;

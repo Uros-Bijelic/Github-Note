@@ -10,8 +10,6 @@ import {
   Pagination as ShadCNPagination,
 } from '@/components/ui/pagination';
 
-// ----------------------------------------------------------------
-
 interface IPaginationProps {
   totalPages: number;
   currentPage: number;

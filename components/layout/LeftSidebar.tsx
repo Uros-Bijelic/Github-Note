@@ -12,8 +12,6 @@ import { getUserById } from '@/lib/actions/user-actions';
 import type { IRecentPost } from '@/types/post';
 import type { IUser } from '@/types/user';
 
-// ----------------------------------------------------------------
-
 const LeftSidebar = async () => {
   const recentPosts: IRecentPost[] | undefined = await getRecentPosts();
   const session = await auth();
@@ -21,7 +19,7 @@ const LeftSidebar = async () => {
     session?.user && (await getUserById(session?.user.id));
 
   return (
-    <aside className="flex min-h-screen w-[290px] min-w-[290px] flex-col border-r-[1.5px] border-r-gray-border bg-black-800 px-7 max-md:hidden">
+    <aside className="flex min-h-screen w-72.5 min-w-72.5 flex-col border-r-[1.5px] border-r-gray-border bg-black-800 px-7 max-md:hidden">
       <Link href="/">
         <Image
           src="/assets/images/Logo.svg"

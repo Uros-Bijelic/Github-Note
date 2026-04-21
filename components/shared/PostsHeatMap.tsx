@@ -2,8 +2,6 @@
 
 import ReactHeatMap, { type HeatMapProps } from '@uiw/react-heat-map';
 
-// ----------------------------------------------------------------
-
 interface IPostsHeatMapProps extends HeatMapProps {}
 
 const PostsHeatMap: React.FC<IPostsHeatMapProps> = ({ value }) => {

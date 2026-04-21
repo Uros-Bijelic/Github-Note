@@ -3,8 +3,6 @@ import SocialMediaLinksDialog from '../profile/SocialMediaLinksDialog';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// ----------------------------------------------------------------
-
 interface ISocialMediaLinksProps {
   githubName?: string;
   githubLink?: string;
@@ -35,7 +33,7 @@ const SocialMediaLinks: React.FC<ISocialMediaLinksProps> = ({
   dribbbleName,
 }) => {
   return (
-    <div className="flex flex-col gap-[30px]">
+    <div className="flex flex-col gap-7.5">
       <SocialMediaLinksDialog
         githubLink={githubLink}
         githubName={githubName}

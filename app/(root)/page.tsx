@@ -1,30 +1,32 @@
-import type { HeatMapValue } from '@uiw/react-heat-map';
+import type { HeatMapValue } from "@uiw/react-heat-map";
 
-import { auth } from '@/auth';
-import PostItem from '@/components/post/PostItem';
-import PostItemBadge from '@/components/post/PostItemBadge';
-import Pagination from '@/components/shared/Pagination';
-import PostsHeatMap from '@/components/shared/PostsHeatMap';
-import { POST_TYPES } from '@/constants';
-import { getAllPosts, getHeatMapPostsData } from '@/lib/actions/post-actions';
-import type { IPostsResponse } from '@/types/post';
-import { EQueryPostType } from '@/types/post-types';
-import { parseSearchParams, parseTagsParams } from '@/utils/params';
+import { auth } from "@/auth";
+import PostItem from "@/components/post/PostItem";
+import PostItemBadge from "@/components/post/PostItemBadge";
+import Pagination from "@/components/shared/Pagination";
+import PostsHeatMap from "@/components/shared/PostsHeatMap";
+import { POST_TYPES } from "@/constants";
+import { getAllPosts, getHeatMapPostsData } from "@/lib/actions/post-actions";
+import type { IPostsResponse } from "@/types/post";
+import { EQueryPostType } from "@/types/post-types";
+import { parseSearchParams, parseTagsParams } from "@/utils/params";
 
 // ----------------------------------------------------------------
 
 interface IHomePageProps {
-  searchParams: {
+  searchParams: Promise<{
     page: string | string[] | undefined;
     type: string | string[] | undefined;
     tag: string | string[] | undefined;
-  };
+  }>;
 }
 
 const HomePage: React.FC<IHomePageProps> = async ({ searchParams }) => {
-  const page = parseSearchParams(searchParams.page, '1');
-  const postType = parseSearchParams(searchParams.type, '') as EQueryPostType;
-  const tags = parseTagsParams(searchParams.tag);
+  const params = await searchParams;
+
+  const page = parseSearchParams(params.page, "1");
+  const postType = parseSearchParams(params.type, "") as EQueryPostType;
+  const tags = parseTagsParams(params.tag);
 
   const session = await auth();
 
@@ -35,16 +37,16 @@ const HomePage: React.FC<IHomePageProps> = async ({ searchParams }) => {
     itemsPerPage: 3,
   });
   if (response?.status !== 200)
-    throw new Error('Posts not available at the moment!');
+    throw new Error("Posts not available at the moment!");
 
   const heatMapPosts: HeatMapValue[] = await getHeatMapPostsData();
 
   const { posts, totalPages, hasNextPage } = response;
 
   return (
-    <section className="px-5 lg:px-[30px]">
+    <section className="px-5 lg:px-7.5">
       <h1 className="h1-bold mb-2.5 mt-10">Hello {session?.user.name}</h1>
-      <p className="p1-regular mb-[30px]">
+      <p className="p1-regular mb-7.5">
         Time to jot down your latest learnings today!
       </p>
       <div className="mx-auto mb-9 max-w-[800]">

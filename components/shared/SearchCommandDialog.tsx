@@ -19,8 +19,6 @@ import { getAllPosts } from '@/lib/actions/post-actions';
 import type { IPost } from '@/types/post';
 import { EPostType } from '@/types/post-types';
 
-// ----------------------------------------------------------------
-
 const generateItemImage = (type: EPostType) => {
   const BASE_IMG_PATH = '/assets/icons/';
 

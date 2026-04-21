@@ -25,8 +25,6 @@ import {
 import { EOnboardingStep } from '@/types/onboarding-step';
 import type { IUser } from '@/types/user';
 
-// ----------------------------------------------------------------
-
 const generateTitleBasedOnStep = (step: EOnboardingStep) => {
   switch (step) {
     case EOnboardingStep.BASIC_INFORMATION:
@@ -62,7 +60,10 @@ const OnboardingContainer: React.FC<IOnboardingContainer> = ({ user }) => {
       learningGoals: user?.learningGoals || [],
       knowledgeLevel: user?.knowledgeLevel || [],
       techStack:
-        user?.techStack?.map((item) => ({ label: item, value: item })) || [],
+        user?.techStack?.map((item) => ({
+          label: item,
+          value: item,
+        })) || [],
       startDate: user?.startDate ? new Date(user?.startDate) : undefined,
       endDate: user?.endDate ? new Date(user?.endDate) : undefined,
       isAvailable: user?.isAvailable || false,
@@ -102,8 +103,8 @@ const OnboardingContainer: React.FC<IOnboardingContainer> = ({ user }) => {
   };
 
   return (
-    <div className="my-[30px] px-5 lg:px-[30px]">
-      <div className="m-auto max-w-[600px]">
+    <div className="my-7.5 px-5 lg:px-7.5">
+      <div className="m-auto max-w-150">
         <Image
           src="/assets/images/Logo.svg"
           alt="Logo"

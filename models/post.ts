@@ -1,15 +1,13 @@
-import { Model, model, models, Schema } from 'mongoose';
+import { Model, Types, model, models, Schema } from 'mongoose';
 
 import { EPostType } from '@/types/post-types';
-
-// ----------------------------------------------------------------
 
 interface IPostModel {
   title: string;
   type: EPostType;
-  tags: Schema.Types.ObjectId[];
+  tags: Types.ObjectId[];
   description: string;
-  ownerId: Schema.Types.ObjectId;
+  ownerId: Types.ObjectId;
   checklist?: string[];
   codeExample?: string;
   content?: string;
@@ -17,8 +15,8 @@ interface IPostModel {
     label: string;
     link: string;
   }[];
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 interface ILearningResourcesSchema {

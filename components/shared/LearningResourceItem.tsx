@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-// ----------------------------------------------------------------
-
 interface ILearningResourceItemProps {
   label: string;
   link: string;
