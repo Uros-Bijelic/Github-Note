@@ -7,8 +7,6 @@ import { compareSync } from 'bcryptjs';
 
 import User from '@/models/user';
 
-// ----------------------------------------------------------------
-
 export const validateUserOnLogin = async (email: string, password: string) => {
   try {
     const validatedCredentials = loginFormSchema.safeParse({

@@ -2,8 +2,6 @@ import { Button } from '../ui/button';
 
 import Image from 'next/image';
 
-// ----------------------------------------------------------------
-
 const RelatedPosts = () => {
   return (
     <div>

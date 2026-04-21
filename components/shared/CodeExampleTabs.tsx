@@ -7,8 +7,6 @@ import { atomOneDarkReasonable } from 'react-syntax-highlighter/dist/esm/styles/
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-// ----------------------------------------------------------------
-
 const CodeExampleTabs: React.FC = () => {
   const { getValues, trigger } = useFormContext();
 

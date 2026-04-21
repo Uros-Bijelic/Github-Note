@@ -1,7 +1,5 @@
 import Image from 'next/image';
 
-// ----------------------------------------------------------------
-
 interface IChecklistItemProps {
   title: string;
   isBlueIcon?: boolean;

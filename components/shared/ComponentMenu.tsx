@@ -9,8 +9,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-// ----------------------------------------------------------------
-
 interface IComponentMenuProps {
   postId: string;
   onDeletePost: () => void;

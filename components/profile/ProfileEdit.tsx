@@ -18,14 +18,9 @@ import { useForm } from 'react-hook-form';
 import { updateUserProfileInfo } from '@/lib/actions/user-actions';
 import { type IUpdateUserData, updateUserSchema } from '@/lib/zod/user-schema';
 import type { IUser } from '@/types/user';
-
-// ----------------------------------------------------------------
-
 interface IProfileEditProps {
   user: IUser;
 }
-
-// ----------------------------------------------------------------
 
 const ProfileEdit: React.FC<IProfileEditProps> = ({ user }) => {
   const { toast } = useToast();
@@ -68,7 +63,7 @@ const ProfileEdit: React.FC<IProfileEditProps> = ({ user }) => {
   };
 
   return (
-    <section className="px-5 py-10 lg:px-[30px]">
+    <section className="px-5 py-10 lg:px-7.5">
       <h1 className="h1-bold mb-5">Edit Profile</h1>
       <p className="subtitle-small mb-6 uppercase">Basic Information</p>
       <Form {...form}>
@@ -76,7 +71,7 @@ const ProfileEdit: React.FC<IProfileEditProps> = ({ user }) => {
           <div className="mb-6">
             <ProfileImageUpload name="avatarImg" />
           </div>
-          <div className="mb-10 flex flex-col gap-[30px]">
+          <div className="mb-10 flex flex-col gap-7.5">
             <RHFInput
               name="fullName"
               label="Name"

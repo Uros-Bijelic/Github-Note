@@ -1,4 +1,3 @@
-// import Select from 'react-select';
 import {
   FormControl,
   FormDescription,
@@ -11,8 +10,6 @@ import {
 import Image from 'next/image';
 import { useFormContext } from 'react-hook-form';
 import CreatableSelect from 'react-select/creatable';
-
-// ----------------------------------------------------------------
 
 export interface ISelectOptions {
   label: string;

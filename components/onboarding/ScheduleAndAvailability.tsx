@@ -6,8 +6,6 @@ import { Button } from '../ui/button';
 
 import { useFormContext, useWatch } from 'react-hook-form';
 
-// ----------------------------------------------------------------
-
 const ScheduleAndAvailability: React.FC = () => {
   const { getValues } = useFormContext();
   useWatch({ name: 'startDate' });

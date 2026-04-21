@@ -9,8 +9,6 @@ import { Input, type InputProps } from '../ui/input';
 
 import { useFormContext } from 'react-hook-form';
 
-// ----------------------------------------------------------------
-
 interface IRHFInputProps extends InputProps {
   name: string;
   label?: string;

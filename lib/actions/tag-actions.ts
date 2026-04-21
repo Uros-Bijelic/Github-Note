@@ -5,8 +5,6 @@ import { connectToMongoDB } from '../database/mongodb';
 import { auth } from '@/auth';
 import Tag from '@/models/tag';
 
-// ----------------------------------------------------------------
-
 export const getTags = async (ownerId: string, limit = 16) => {
   try {
     await connectToMongoDB();

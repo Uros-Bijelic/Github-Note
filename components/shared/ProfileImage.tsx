@@ -5,8 +5,6 @@ import Image from 'next/image';
 
 import { CLOUDINARY_URL } from '@/constants';
 
-// ----------------------------------------------------------------
-
 interface IProfileImageProps {
   avatarImg: string;
 }

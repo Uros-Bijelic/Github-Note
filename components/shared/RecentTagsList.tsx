@@ -2,8 +2,6 @@ import TagItem from './TagItem';
 
 import type { ITag } from '@/types/tag';
 
-// ----------------------------------------------------------------
-
 interface IRecentTagsListProps {
   tags: ITag[];
 }

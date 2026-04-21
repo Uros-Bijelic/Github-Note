@@ -17,8 +17,6 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-// ----------------------------------------------------------------
-
 interface IRHFSelectProps {
   name: string;
   label?: string;

@@ -20,18 +20,18 @@ interface IProfileHomeProps {
 const ProfileHome: React.FC<IProfileHomeProps> = ({ user, heatMapData }) => {
   return (
     <section className="py-10">
-      <div className="flex-between mb-8 flex-wrap gap-2.5 px-5 lg:px-[30px]">
+      <div className="flex-between mb-8 flex-wrap gap-2.5 px-5 lg:px-7.5">
         <div className="flex items-center gap-5">
           <Image
             src={user.avatarImg || '/assets/icons/image-upload-placeholder.svg'}
             width={90}
             height={90}
             alt="Avatart"
-            className="size-[90px] shrink-0 rounded-[5px] object-cover"
+            className="size-22.5 shrink-0 rounded-[5px] object-cover"
           />
           <div className="flex flex-col gap-2.5">
             <h2 className="h2-bold">{user.fullName}</h2>
-            <ul className="flex flex-wrap gap-[18px]">
+            <ul className="flex flex-wrap gap-4.5">
               <li className="flex cursor-pointer gap-1 text-primary-500">
                 <Image
                   src="assets/icons/icn-link.svg"
@@ -67,7 +67,7 @@ const ProfileHome: React.FC<IProfileHomeProps> = ({ user, heatMapData }) => {
         </Link>
       </div>
       <div className="flex flex-col gap-9">
-        <div className="flex flex-col gap-3.5 px-5 lg:px-[30px]">
+        <div className="flex flex-col gap-3.5 px-5 lg:px-7.5">
           <p className="p1-bold text-white-100">Contribution Grid</p>
           <PostsHeatMap value={heatMapData} />
         </div>
@@ -94,7 +94,7 @@ const ProfileHome: React.FC<IProfileHomeProps> = ({ user, heatMapData }) => {
                 : icon.toLowerCase();
               if (AVAILABLE_TECH_STACK_ICONS.includes(shortIconName)) {
                 return (
-                  <div key={icon} className="relative size-[32px]">
+                  <div key={icon} className="relative size-8">
                     <Image
                       src={`/assets/icons/tech-stack/${shortIconName}.svg`}
                       fill

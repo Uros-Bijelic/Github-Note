@@ -3,8 +3,6 @@ import Link from 'next/link';
 
 import { auth } from '@/auth';
 
-// ----------------------------------------------------------------
-
 const NavProfileInfo: React.FC = async () => {
   const session = await auth();
 
@@ -18,7 +16,7 @@ const NavProfileInfo: React.FC = async () => {
           width={36}
           height={36}
           alt="Profile Image"
-          className={`rounded-lg ${session?.user.image ? 'size-9' : 'size-[18px]'}`}
+          className={`rounded-lg ${session?.user.image ? 'size-9' : 'size-4.5'}`}
         />
       </div>
       <div>

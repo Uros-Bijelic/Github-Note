@@ -22,8 +22,6 @@ import { deletePost } from '@/lib/actions/post-actions';
 import type { IPost } from '@/types/post';
 import { EPostType } from '@/types/post-types';
 
-// ----------------------------------------------------------------
-
 interface IPostDetailsProps {
   post: IPost;
 }
@@ -108,7 +106,7 @@ const PostDetails: React.FC<IPostDetailsProps> = ({ post }) => {
 
   return (
     <section>
-      <div className=" flex flex-col gap-5 border-b border-b-[#55597D1A] px-[30px] pb-8 pt-[30px]">
+      <div className=" flex flex-col gap-5 border-b border-b-[#55597D1A] px-7.5 pb-8 pt-7.5">
         <div className="lg:flex-between flex gap-3 max-lg:flex-col">
           <h1 className="h1-bold line-clamp-2">{title}</h1>
           <div className="flex-between lg:flex-center shrink-0 gap-2.5">
@@ -136,7 +134,7 @@ const PostDetails: React.FC<IPostDetailsProps> = ({ post }) => {
           ))}
         </ul>
       </div>
-      <div className="flex flex-1 flex-col border-b border-b-[#55597D1A] px-[30px] pb-8 pt-[30px]">
+      <div className="flex flex-1 flex-col border-b border-b-[#55597D1A] px-7.5 pb-8 pt-7.5">
         {type === EPostType.COMPONENT && !!codeExample && (
           <SyntaxHighlightAndCopy code={codeExample} />
         )}
@@ -152,12 +150,12 @@ const PostDetails: React.FC<IPostDetailsProps> = ({ post }) => {
         )}
       </div>
       {!!content && (
-        <div className="prose prose-invert border-b border-b-[#55597D1A] px-[30px] pb-8 pt-[30px]">
+        <div className="prose prose-invert border-b border-b-[#55597D1A] px-7.5 pb-8 pt-7.5">
           {parse(content, parserOptions)}
         </div>
       )}
       {learningResources && learningResources?.length > 0 && (
-        <div className="px-[30px] pb-8 pt-[30px]">
+        <div className="px-7.5 pb-8 pt-7.5">
           <p className="p2-bold mb-2 text-white-100">Resources & Links</p>
           <ul className="flex flex-col gap-1.5">
             {learningResources.map(({ label, link }) => (

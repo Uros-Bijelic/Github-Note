@@ -22,8 +22,6 @@ import {
 } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 
-// ----------------------------------------------------------------
-
 type IRHFDatePickerProps = CalendarProps & {
   name: string;
   label: string;

@@ -6,8 +6,6 @@ import { Button } from '../ui/button';
 import Image from 'next/image';
 import { useFieldArray } from 'react-hook-form';
 
-// ----------------------------------------------------------------
-
 const RHFLearningResources: React.FC = () => {
   const { fields, append, remove } = useFieldArray({
     name: 'learningResources',

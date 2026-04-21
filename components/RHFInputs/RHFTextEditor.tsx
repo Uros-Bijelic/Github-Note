@@ -13,8 +13,6 @@ import {
 } from '@/components/ui/form';
 import './RHFTextEditor.css';
 
-// ----------------------------------------------------------------
-
 interface ITextEditorProps {
   name: string;
   label?: string;

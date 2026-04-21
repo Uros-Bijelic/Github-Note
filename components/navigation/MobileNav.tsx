@@ -2,8 +2,6 @@ import Navbar from './Navbar';
 
 import Image from 'next/image';
 
-// ----------------------------------------------------------------
-
 const MobileNav: React.FC = () => {
   return (
     <header className="flex-between bg-black-800 px-5 py-6">

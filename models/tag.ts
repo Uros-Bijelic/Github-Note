@@ -1,10 +1,8 @@
-import { Model, model, models, Schema } from 'mongoose';
-
-// ----------------------------------------------------------------
+import { Model, Types, model, models, Schema } from 'mongoose';
 
 interface IModelTag {
   title: string;
-  ownerId: Schema.Types.ObjectId;
+  ownerId: Types.ObjectId;
 }
 
 const tagSchema = new Schema<IModelTag>(

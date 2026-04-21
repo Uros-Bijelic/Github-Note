@@ -12,7 +12,7 @@ import {
 
 // ----------------------------------------------------------------
 
-export const middleware = async (req: NextRequest) => {
+export const proxy = async (req: NextRequest) => {
   const currentRoute = req.nextUrl.pathname;
 
   const response = await fetch(`${req.nextUrl.origin}/api/user`, {

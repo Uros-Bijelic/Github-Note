@@ -19,8 +19,6 @@ import {
   socialMediaLinksSchema,
 } from '@/lib/zod/user-schema';
 
-// ----------------------------------------------------------------
-
 interface ISocialMediaLinksDialogProps {
   githubName?: string;
   githubLink?: string;

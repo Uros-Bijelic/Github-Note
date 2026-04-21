@@ -9,8 +9,6 @@ import { useRouter } from 'next/navigation';
 import { EPostType } from '@/types/post-types';
 import type { ITag } from '@/types/tag';
 
-// ----------------------------------------------------------------
-
 interface IPostItemProps {
   id: string;
   type: EPostType;

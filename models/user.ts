@@ -15,7 +15,7 @@ interface IUser extends Document {
   portfolioUrl: string;
   learningGoals?: ILearningGoals[];
   knowledgeLevel?: string[];
-  techStack: string;
+  techStack: string[];
   isAvailable: boolean;
   startDate: Date | undefined;
   endDate: Date | undefined;
