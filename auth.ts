@@ -4,7 +4,6 @@ import { IUser } from './types/user';
 
 import type { Session } from 'next-auth';
 import NextAuth from 'next-auth';
-import type { Session } from 'next-auth';
 
 // ----------------------------------------------------------------
 
@@ -34,7 +33,7 @@ export const {
 
         return true;
       } catch (error) {
-        console.log('Error with sign in with provider', error);
+        console.log('Error with sign in with provider ', error);
         return false;
       }
     },
