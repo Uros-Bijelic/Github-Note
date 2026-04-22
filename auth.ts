@@ -4,7 +4,6 @@ import { IUser } from './types/user';
 
 import type { Session } from 'next-auth';
 import NextAuth from 'next-auth';
-import type { Session } from 'next-auth';
 
 // ----------------------------------------------------------------
 
