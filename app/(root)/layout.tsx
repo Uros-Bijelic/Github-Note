@@ -6,6 +6,7 @@ import { getRecentTags } from "@/lib/actions/tag-actions";
 import type { ITag } from "@/types/tag";
 
 // ----------------------------------------------------------------
+export const dynamic = "force-dynamic";
 
 const Layout = async ({
   children,
