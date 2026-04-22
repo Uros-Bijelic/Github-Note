@@ -1,6 +1,6 @@
-import PostDetails from "@/components/post/PostDetails";
-import { getPostById } from "@/lib/actions/post-actions";
-import type { IPost } from "@/types/post";
+import PostDetails from '@/components/post/PostDetails';
+import { getPostById } from '@/lib/actions/post-actions';
+import type { IPost } from '@/types/post';
 
 // ----------------------------------------------------------------
 
@@ -15,7 +15,7 @@ const PostDetailsPage: React.FC<IPostDetailsPage> = async ({ params }) => {
 
   if (!post) {
     throw new Error(
-      "Something went wrong. Can't whow Post details at the moment!"
+      "Something went wrong. Can't show Post details at the moment!"
     );
   }
 

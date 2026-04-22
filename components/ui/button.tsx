@@ -6,7 +6,7 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-md px-3.5 py-2.5 text-sm font-medium transition-colors disabled:opacity-50',
+  'inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-md px-3.5 py-2.5 text-sm font-medium transition-colors disabled:opacity-50 cursor-pointer',
   {
     variants: {
       variant: {
@@ -31,7 +31,8 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }

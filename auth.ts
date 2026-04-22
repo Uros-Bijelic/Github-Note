@@ -2,8 +2,8 @@ import { createNewUser, getUserByEmail } from './lib/actions/user-actions';
 import { AUTH_CONFIG } from './lib/auth.config';
 import { IUser } from './types/user';
 
-import NextAuth from 'next-auth';
 import type { Session } from 'next-auth';
+import NextAuth from 'next-auth';
 
 // ----------------------------------------------------------------
 
@@ -51,9 +51,7 @@ export const {
         }
 
         return token;
-      } catch (error) {
-        console.log('Error inside jwt callback', error);
-      }
+      } catch (error) {}
 
       return token;
     },

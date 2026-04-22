@@ -9,10 +9,9 @@ import RHFInput from '@/components/RHFInputs/RHFInput';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { useToast } from '@/components/ui/use-toast';
-import { signIn, signInGithub, signInGoogle } from '@/lib/actions/auth';
+import { signInGithub, signInGoogle } from '@/lib/actions/auth';
 import { loginFormSchema, type ILoginFormData } from '@/lib/zod/user-schema';
-
-// ----------------------------------------------------------------
+import { signIn } from 'next-auth/react';
 
 const Login = () => {
   const { toast } = useToast();
@@ -31,16 +30,15 @@ const Login = () => {
       await signIn('credentials', {
         email,
         password,
-        // redirect: false,
-        redirectTo: '/',
       });
     } catch (error) {
       if (error instanceof Error) {
         console.log('Error on user login', error);
-        return toast({
+        toast({
           variant: 'error',
           title: 'Invalid email or password!',
         });
+        return;
       }
 
       toast({
@@ -52,7 +50,7 @@ const Login = () => {
 
   return (
     <section className="px-5">
-      <div className="m-auto my-16 flex w-full max-w-[382px] flex-col">
+      <div className="m-auto my-16 flex w-full max-w-95.5 flex-col">
         <div className="mb-24 flex justify-center">
           <Image
             src="/assets/images/Logo.svg"
