@@ -15,7 +15,7 @@ const PostDetailsPage: React.FC<IPostDetailsPage> = async ({ params }) => {
 
   if (!post) {
     throw new Error(
-      "Something went wrong. Can't whow Post details at the moment!"
+      "Something went wrong. Can't show Post details at the moment!"
     );
   }
 

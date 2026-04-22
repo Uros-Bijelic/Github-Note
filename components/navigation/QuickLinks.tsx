@@ -29,7 +29,7 @@ const QuickLinks: React.FC<IQuickLinksProps> = ({ githubUrl }) => {
         GitHub
       </Link>
       <Button
-        className="p3-medium flex w-auto items-center justify-start gap-3 bg-transparent p-0 text-white-500! shadow-none hover:bg-transparent"
+        className="p3-medium flex w-auto items-center justify-start gap-3 bg-transparent p-0 text-white-500! shadow-none hover:bg-transparent cursor-pointer focus:ring-0"
         onClick={() => signOut({ redirectTo: '/login' })}
       >
         <Image
