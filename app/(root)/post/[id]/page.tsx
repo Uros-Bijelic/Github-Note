@@ -1,6 +1,6 @@
-import PostDetails from '@/components/post/PostDetails';
-import { getPostById } from '@/lib/actions/post-actions';
-import type { IPost } from '@/types/post';
+import PostDetails from "@/components/post/PostDetails";
+import { getPostById } from "@/lib/actions/post-actions";
+import type { IPost } from "@/types/post";
 
 // ----------------------------------------------------------------
 
