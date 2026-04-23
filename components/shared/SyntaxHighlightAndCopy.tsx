@@ -24,7 +24,6 @@ const SyntaxHighlightAndCopy: React.FC<ISyntaxHighlightAndCopyProps> = ({
         variant: 'success',
       });
     } catch (error) {
-      console.log('Copy to clipboard failed!', error);
       toast({
         title: 'Failed to copy to clipboard',
         variant: 'error',

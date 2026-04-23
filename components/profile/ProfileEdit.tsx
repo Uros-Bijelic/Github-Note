@@ -55,7 +55,6 @@ const ProfileEdit: React.FC<IProfileEditProps> = ({ user }) => {
         router.push('/profile');
       }
     } catch (error) {
-      console.log('Error updating user data!', error);
       if (error instanceof Error) {
         toast({ variant: 'error', title: error.message });
       }

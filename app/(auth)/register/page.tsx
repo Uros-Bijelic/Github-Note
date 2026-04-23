@@ -46,14 +46,12 @@ const Register = () => {
       });
 
       router.push('/');
-    } catch (error) {
-      console.log('Error sign up page, create new user', error);
-    }
+    } catch (error) {}
   };
 
   return (
     <section className="px-5">
-      <div className="m-auto my-16 flex w-full max-w-[382px] flex-col">
+      <div className="m-auto my-16 flex w-full max-w-95.5 flex-col">
         <div className="mb-24 flex justify-center">
           <Image
             src="/assets/images/Logo.svg"

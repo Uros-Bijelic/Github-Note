@@ -98,7 +98,6 @@ const CreateOrUpdatePost: React.FC<ICreateOrUpdatePostProps> = ({
       }
     } catch (error) {
       if (error instanceof Error) {
-        console.log('Error creating or update', error);
         toast({
           variant: 'error',
           title: `Something went wrong. Couldn't ${isEditPage ? 'update' : 'create'} post!`,

@@ -33,7 +33,7 @@ export const {
 
         return true;
       } catch (error) {
-        console.log('Error with sign in with provider ', error);
+        
         return false;
       }
     },

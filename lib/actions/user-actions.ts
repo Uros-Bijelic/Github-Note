@@ -22,9 +22,7 @@ export const getUserById = async (userId: string) => {
     const user = await User.findById<IUser>(userId);
 
     return JSON.parse(JSON.stringify(user));
-  } catch (error) {
-    console.log('Error getting user from MongoDB', error);
-  }
+  } catch (error) {}
 };
 
 export const getUserByEmail = async (email: string) => {
@@ -34,9 +32,7 @@ export const getUserByEmail = async (email: string) => {
     const user = await User.findOne<IUser>({ email });
 
     return JSON.parse(JSON.stringify(user));
-  } catch (error) {
-    console.log('Error getting user from MongoDB', error);
-  }
+  } catch (error) {}
 };
 
 export const createNewUser = async ({
@@ -72,7 +68,6 @@ export const createNewUser = async ({
         return { ok: false, status: 409 };
     }
 
-    console.log('Error creating new user', error);
     return { ok: false, status: 500 };
   }
 };
@@ -97,15 +92,6 @@ export const updateUserOnboardingStep = async (
 
     return JSON.parse(JSON.stringify(user));
   } catch (error) {
-    if (error instanceof Error) {
-      console.log('error update User Onboarding State', error instanceof Error);
-    }
-    if (error instanceof MongoError) {
-      console.log(
-        'error update User Onboarding State TYPEOF',
-        error instanceof MongoError
-      );
-    }
     throw new Error('Something went wrong during updating onboarding step.');
   }
 };
@@ -131,7 +117,6 @@ export const updateUserOnboarding = async (data: IUserOnboarding) => {
 
     return { ok: true, status: 200 };
   } catch (error) {
-    console.log('Error updating user onboarding', error);
     throw new Error('Something went wrong during onboarding.');
   }
 };
@@ -152,7 +137,6 @@ export const updateUserProfileInfo = async (data: IUpdateUserData) => {
 
     return { ok: true, status: 200 };
   } catch (error) {
-    console.log('Error updating user', error);
     throw new Error("Something went wrong, couldn't update user");
   }
 };

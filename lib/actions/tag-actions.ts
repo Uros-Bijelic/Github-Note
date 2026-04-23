@@ -13,36 +13,9 @@ export const getTags = async (ownerId: string, limit = 16) => {
 
     return JSON.parse(JSON.stringify(tags));
   } catch (error) {
-    console.log('Error fetching tags', error);
     return [];
   }
 };
-
-// export const getPopularTags = async () => {
-//   try {
-//     const session = await auth();
-//     if (!session) return;
-
-//     const popularTags = await Post.aggregate([
-//       // { $match: { ownerId: session.user.id } },
-//       { $unwind: '$tags' },
-//       // { $count: 'tags' },
-//       { $group: { _id: '$tags', totalCount: { $sum: 1 } } },
-//     ]);
-
-//     const popularTags = await Post.aggregate()
-//       .project({
-//         _id: 0,
-//         tags: 1,
-//       })
-//       .group({ _id: '$tags', totalCount: { $sum: 1 } });
-
-//     const popularTags = await Post.find().select('tags').group();
-
-//   } catch (error) {
-//     console.log('Error aggregation', error);
-//   }
-// };
 
 export const getRecentTags = async () => {
   try {
@@ -59,7 +32,6 @@ export const getRecentTags = async () => {
 
     return JSON.parse(JSON.stringify(recentTags));
   } catch (error) {
-    console.log('Error fetching recently created timestamps.', error);
     return [];
   }
 };

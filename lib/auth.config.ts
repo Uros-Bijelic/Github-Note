@@ -38,9 +38,7 @@ export const AUTH_CONFIG: NextAuthConfig = {
           if (!user) return null;
 
           return user;
-        } catch (error) {
-          console.log('Error fetching user from MongoDB', error);
-        }
+        } catch (error) {}
 
         return null;
       },
