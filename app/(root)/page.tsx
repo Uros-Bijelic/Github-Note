@@ -1,15 +1,15 @@
-import type { HeatMapValue } from "@uiw/react-heat-map";
+import type { HeatMapValue } from '@uiw/react-heat-map';
 
-import { auth } from "@/auth";
-import PostItem from "@/components/post/PostItem";
-import PostItemBadge from "@/components/post/PostItemBadge";
-import Pagination from "@/components/shared/Pagination";
-import PostsHeatMap from "@/components/shared/PostsHeatMap";
-import { POST_TYPES } from "@/constants";
-import { getAllPosts, getHeatMapPostsData } from "@/lib/actions/post-actions";
-import type { IPostsResponse } from "@/types/post";
-import { EQueryPostType } from "@/types/post-types";
-import { parseSearchParams, parseTagsParams } from "@/utils/params";
+import { auth } from '@/auth';
+import PostItem from '@/components/post/PostItem';
+import PostItemBadge from '@/components/post/PostItemBadge';
+import Pagination from '@/components/shared/Pagination';
+import PostsHeatMap from '@/components/shared/PostsHeatMap';
+import { POST_TYPES } from '@/constants';
+import { getAllPosts, getHeatMapPostsData } from '@/lib/actions/post-actions';
+import type { IPostsResponse } from '@/types/post';
+import { EQueryPostType } from '@/types/post-types';
+import { parseSearchParams, parseTagsParams } from '@/utils/params';
 
 // ----------------------------------------------------------------
 
@@ -24,8 +24,8 @@ interface IHomePageProps {
 const HomePage: React.FC<IHomePageProps> = async ({ searchParams }) => {
   const params = await searchParams;
 
-  const page = parseSearchParams(params.page, "1");
-  const postType = parseSearchParams(params.type, "") as EQueryPostType;
+  const page = parseSearchParams(params.page, '1');
+  const postType = parseSearchParams(params.type, '') as EQueryPostType;
   const tags = parseTagsParams(params.tag);
 
   const session = await auth();
@@ -36,8 +36,9 @@ const HomePage: React.FC<IHomePageProps> = async ({ searchParams }) => {
     tags,
     itemsPerPage: 3,
   });
-  if (response?.status !== 200)
-    throw new Error("Posts not available at the moment!");
+  if (response?.status !== 200) {
+    throw new Error('Posts not available at the moment!');
+  }
 
   const heatMapPosts: HeatMapValue[] = await getHeatMapPostsData();
 

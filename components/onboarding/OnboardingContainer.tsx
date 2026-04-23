@@ -92,7 +92,6 @@ const OnboardingContainer: React.FC<IOnboardingContainer> = ({ user }) => {
         router.push('/');
       }
     } catch (error) {
-      console.log('Error in submit onboarding user info', error);
       if (error instanceof Error) {
         toast({
           variant: 'error',

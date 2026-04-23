@@ -52,7 +52,6 @@ export const createPost = async (data: IPostSchema) => {
       redirectRoute: '/post/' + newPost._id.toString(),
     };
   } catch (error) {
-    console.log('Error creating new post!', error);
     throw new Error('Error creating new post!');
   }
 };
@@ -107,8 +106,6 @@ export const updatePost = async (postId: string, data: IPostSchema) => {
       redirectRoute: '/post/' + postId,
     };
   } catch (error) {
-    console.log('Error updating post in server action!', error);
-    // throw new Error('Error updating post!');
     return {
       ok: false,
       status: 500,
@@ -179,7 +176,6 @@ export const getAllPosts = async ({
       hasNextPage,
     };
   } catch (error) {
-    console.log('Error fetching posts!', error);
     throw new Error("Something went wrong. Couldn't show posts! ");
   }
 };
@@ -191,9 +187,7 @@ export const getPostById = async (postId: string) => {
     const post = await Post.findById(postId).populate('tags').lean();
 
     return JSON.parse(JSON.stringify(post));
-  } catch (error) {
-    console.log('Error fetching post with specific ID', error);
-  }
+  } catch (error) {}
 };
 
 export const deletePost = async (postId: string) => {
@@ -216,7 +210,6 @@ export const deletePost = async (postId: string) => {
     revalidatePath('/');
     return { ok: true, status: 200 };
   } catch (error) {
-    console.log('Error deleting post!', error);
     throw new Error('Something went wrong. Post not deleted.');
   }
 };
@@ -248,8 +241,6 @@ export const getHeatMapPostsData = async () => {
     ]);
     return JSON.parse(JSON.stringify(formatedPostDates));
   } catch (error) {
-    console.log('Error deleting post!', error);
-
     return [];
   }
 };
@@ -267,7 +258,6 @@ export const getRecentPosts = async () => {
 
     return JSON.parse(JSON.stringify(posts));
   } catch (error) {
-    console.log('Error fetching recent posts!', error);
     return null;
   }
 };

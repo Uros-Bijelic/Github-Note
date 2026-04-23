@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 
 import RHFInput from '@/components/RHFInputs/RHFInput';
+import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { useToast } from '@/components/ui/use-toast';
@@ -30,10 +31,10 @@ const Login = () => {
       await signIn('credentials', {
         email,
         password,
+        redirectTo: '/',
       });
     } catch (error) {
       if (error instanceof Error) {
-        console.log('Error on user login', error);
         toast({
           variant: 'error',
           title: 'Invalid email or password!',
@@ -47,6 +48,10 @@ const Login = () => {
       });
     }
   };
+
+  if (loginForm.formState.isSubmitSuccessful) {
+    return <LoadingSpinner asLayout />;
+  }
 
   return (
     <section className="px-5">

@@ -14,10 +14,6 @@ export const validateUserOnLogin = async (email: string, password: string) => {
       password,
     });
     if (!validatedCredentials.success) {
-      console.log(
-        'Errors validating email and password on server',
-        validatedCredentials.error
-      );
       throw new Error('Bad credentials.');
     }
 
@@ -32,7 +28,5 @@ export const validateUserOnLogin = async (email: string, password: string) => {
     if (!compareSync(password as string, user.password)) return null;
 
     return JSON.parse(JSON.stringify(user));
-  } catch (error) {
-    console.log('Error fetching user from MongoDB', error);
-  }
+  } catch (error) {}
 };
