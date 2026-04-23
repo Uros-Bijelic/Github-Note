@@ -12,7 +12,7 @@ if (!MONGODB_URI) {
 let cached = (global as any).mongoose;
 
 if (!cached) {
-  cached = (global as any).mongoose = { conn: null, promise: null };
+  cached = (global as any).mongoose = { connection: null, promise: null };
 }
 
 // ✅ add listeners once
@@ -31,9 +31,9 @@ if (!(global as any)._mongooseListenersAdded) {
 mongoose.set('strictQuery', true);
 
 export const connectToMongoDB = async () => {
-  if (cached.conn) {
+  if (cached.connection) {
     console.log('Using cached MongoDB connection');
-    return cached.conn;
+    return cached.connection;
   }
 
   if (!cached.promise) {
@@ -43,6 +43,6 @@ export const connectToMongoDB = async () => {
     });
   }
 
-  cached.conn = await cached.promise;
-  return cached.conn;
+  cached.connection = await cached.promise;
+  return cached.connection;
 };
