@@ -2,28 +2,47 @@
 
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI!;
 
 if (!MONGODB_URI) {
-  throw new Error('MongoDB URI is not availabel');
+  throw new Error('MongoDB URI is not available');
 }
 
-// track the connection
-let isConnected = false;
+// ✅ global cache (important for Vercel)
+let cached = (global as any).mongoose;
+
+if (!cached) {
+  cached = (global as any).mongoose = { conn: null, promise: null };
+}
+
+// ✅ add listeners once
+if (!(global as any)._mongooseListenersAdded) {
+  mongoose.connection.on('connected', () => {
+    console.log('MongoDB connected');
+  });
+
+  mongoose.connection.on('error', (err) => {
+    console.error('MongoDB error:', err);
+  });
+
+  (global as any)._mongooseListenersAdded = true;
+}
+
+mongoose.set('strictQuery', true);
 
 export const connectToMongoDB = async () => {
-  mongoose.set('strictQuery', true);
+  if (cached.conn) {
+    console.log('Using cached MongoDB connection');
+    return cached.conn;
+  }
 
-  if (isConnected) {
-    return;
-  }
-  try {
-    await mongoose.connect(MONGODB_URI, {
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGODB_URI, {
       dbName: 'GITHUB_NOTE',
+      bufferCommands: false,
     });
-    isConnected = true;
-    console.log('mongodb connected successfully!');
-  } catch (error) {
-    console.log('Error connecting to MongoDB went wrong!', error);
   }
+
+  cached.conn = await cached.promise;
+  return cached.conn;
 };
